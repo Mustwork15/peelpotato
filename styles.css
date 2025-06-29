@@ -2799,7 +2799,7 @@ footer {
     font-size: 14px;
 }
 
-#express-payment-preview {
+.express-payment-preview {
     width: 95%;
     padding: 15px;
     background-color: #FCD535;
@@ -2822,13 +2822,15 @@ footer {
  
 #express-you-receive{
   padding-top: 40px;
-  padding-left: 200px;
+  padding-left: 180px;
+  padding-right: 20px;
   font-size: 25px;
 }
 
 #express-you-pay{
   padding-top: 40px;
-  padding-left: 200px;
+  padding-left: 180px;
+  padding-right: 20px;
   font-size: 25px;
 }
 
@@ -2842,9 +2844,21 @@ footer {
   font-size: 14px;
   position: absolute;
   top: 100px;
-  right: 45px;
+  right: 40px;
   margin-left: 10px;
 }
+
+.express-avail-mini{
+  text-align: right;
+  display: flex;
+  flex-direction: row;
+  color: red;
+  font-size: 12px;
+  position: absolute;
+  top: 180px;
+  right: 40px;
+  margin-left: 10px;
+}  
 
 
 #express-from-modal{
