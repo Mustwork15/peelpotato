@@ -2814,6 +2814,21 @@ footer {
     left: 0%;
 }
 
+#express-payment-preview {
+    width: 95%;
+    padding: 15px;
+    background-color: #FCD535;
+    border: none;
+    border-radius: 8px;
+    color: #000;
+    margin-bottom: 25px;
+    width: 95%;
+    margin-left: 2.5%;
+    position: absolute;
+    bottom: 5%;
+    left: 0%;
+}
+
 .express-payment-btn:enabled {
     background-color: #f8e71c;
     color: #000;
