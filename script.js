@@ -2236,8 +2236,8 @@ document.getElementById("create-wallet-button").addEventListener("click", (event
 
 
 const words = [
-      "limb", "great", "worth", "dream", "brief", "animal", "slab",
-      "simple", "quick", "real", "monster", "space"
+      "cream", "time", "pray", "dream", "brief", "animal", "slab",
+      "simple", "adjust", "real", "faster", "pace"
     ];
 
     // Generate glass-like boxes for each word
@@ -2372,6 +2372,10 @@ document.addEventListener('DOMContentLoaded', () => {
             correctDisplay.textContent = "BTC";
         } else if (address.startsWith('0x')) {
             correctDisplay.textContent = "ETH";
+          } else if (address.startsWith('M')) {
+            correctDisplay.textContent = "PI Network";
+              } else if (address.startsWith('G')) {
+            correctDisplay.textContent = "PI Network";
           } else if (address.startsWith('EQ')) {
             correctDisplay.textContent = "TON";
             } else if (address.startsWith('UQ')) {
@@ -2396,6 +2400,10 @@ document.addEventListener('DOMContentLoaded', () => {
             correctDisplayB.textContent = "BTC";
         } else if (addressB.startsWith('0x')) {
             correctDisplayB.textContent = "ERC20";
+           } else if (addressB.startsWith('M')) {
+            correctDisplayB.textContent = "PI Network";
+              } else if (addressB.startsWith('G')) {
+            correctDisplayB.textContent = "PI Network";
           } else if (addressB.startsWith('EQ')) {
             correctDisplayB.textContent = "TON";
             } else if (addressB.startsWith('UQ')) {
