@@ -383,7 +383,7 @@ function openModalDirect(crypto) {
 
 
 
-  // Function to fetch real-time prices
+  // Function to fetch real-time prices 
   async function fetchPrices() {
     const ids = cryptocurrencies.map(crypto => crypto.id).join(',');
     const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd`);
@@ -606,7 +606,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '1811 Orders | 87%',
                 buyPrice: '$0.990',
                 sellPrice: '$1.04',
-                quantity: 'Available: 1,600.50 USDT',
+                quantity: 'Available: 2,600.50 USDT',
                 sellquantity: 'Available: 48,274.80 USDT',
                 limits: 'Order Limits: 100 - 2241 USD',
                 selllimits: 'Order Limits: 20 - 15,000 USD',
@@ -620,9 +620,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '4026 Orders | 94%',
                 buyPrice: '$0.992',
                 sellPrice: '$1.035',
-                quantity: 'Available: 4,506.27 USDT',
-                sellquantity: 'Available: 0.62 USDT',
-                limits: 'Order Limits: 100 - 4472 USD',
+                quantity: 'Available: 40,506.27 USDT',
+                sellquantity: 'Available: 500,865.62 USDT',
+                limits: 'Order Limits: 1000 - 4472 USD',
                 selllimits: 'Order Limits: 500 - 5,632 USD',
                 paymentMethods: '',
                 paymentMethodsB: '',
@@ -635,7 +635,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 buyPrice: '$0.993',
                 sellPrice: '$1.035',
                 quantity: 'Available: 82,962.18 USDT',
-                sellquantity: 'Available: 9,399.95 USDT',
+                sellquantity: 'Available: 97,399.95 USDT',
                 limits: 'Order Limits: 500 - 33000 USD',
                 selllimits: 'Order Limits: 1,200 - 4,000 USD',
                 paymentMethods: '',
@@ -648,9 +648,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '6,382 Orders | 90%',
                 buyPrice: '$0.992',
                 sellPrice: '$1.035',
-                quantity: 'Available: 22,728.93 USDT',
-                sellquantity: 'Available: 8,638.30 USDT',
-                limits: 'Order Limits: 20 - 1455.65 USD',
+                quantity: 'Available: 220,728.93 USDT',
+                sellquantity: 'Available: 873,638.30 USDT',
+                limits: 'Order Limits: 2000 - 1455.65 USD',
                 selllimits: 'Order Limits: 200 - 4,500 USD',
                 paymentMethods: '',
                 paymentMethodsB: '',
@@ -663,7 +663,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 buyPrice: '$0.993',
                 sellPrice: '$1.034',
                 quantity: 'Available: 62,725.73 USDT',
-                sellquantity: 'Available: 9,995.84 BTC',
+                sellquantity: 'Available: 99,995.84 USDT',
                 limits: 'Order Limits: 1780 - 19725 USD',
                 selllimits: 'Order Limits: 150 - 2,500 USD',
                 paymentMethods: '',
@@ -677,7 +677,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 buyPrice: '$0.992',
                 sellPrice: '$1.035',
                 quantity: 'Available: 20,637.83 USDT',
-                sellquantity: 'Available: 1,103 USDT',
+                sellquantity: 'Available: 104,103 USDT',
                 limits: 'Order Limits: 500 - 10000 USD',
                 selllimits: 'Order Limits: 200 - 5,000 USD',
                 paymentMethods: '',
@@ -690,9 +690,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '309 Orders | 88%',
                 buyPrice: '$0.993',
                 sellPrice: '$1.034',
-                quantity: 'Available: 2,585.04 USDT',
-                sellquantity: 'Available: 7,035.85 USDT',
-                limits: 'Order Limits: 50 - 1500 USD',
+                quantity: 'Available: 29,585.04 USDT',
+                sellquantity: 'Available: 77,035.85 USDT',
+                limits: 'Order Limits: 5099 - 1500 USD',
                 selllimits: 'Order Limits: 180 - 5,050 USD',
                 paymentMethods: '',
                 paymentMethodsB: '',
@@ -704,7 +704,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '3,125 Orders | 89%',
                 buyPrice: '$0.989',
                 sellPrice: '$1.04',
-                quantity: 'Available: 5,935.50 USDT',
+                quantity: 'Available: 59,935.50 USDT',
                 sellquantity: 'Available: 92,700 USDT',
                 limits: 'Order Limits: 290 - 3000 USD',
                 selllimits: 'Order Limits: 200 - 5000 USD',
@@ -718,7 +718,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '5232 Orders | 96%',
                 buyPrice: '$0.98',
                 sellPrice: '$1.03',
-                quantity: 'Available: 10,565.75 USDT',
+                quantity: 'Available: 109,565.75 USDT',
                 sellquantity: 'Available: 51,682.5 USDT',
                 limits: 'Order Limits: 500 - 6000 USD',
                 selllimits: 'Order Limits: 200 - 4500 USD',
@@ -760,7 +760,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '3,842 orders | 99%',
                 buyPrice: '$0.99',
                 sellPrice: '$1.04',
-                quantity: 'Available: 20,000.50 USDT',
+                quantity: 'Available: 200,000.50 USDT',
                 sellquantity: 'Available: 620,738.73 USDT',
                 limits: 'Order Limits: 400 - 2000',
                 selllimits: 'Order Limits: 100 - 7000',
@@ -774,7 +774,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '558 orders | 99%',
                 buyPrice: '$0.99',
                 sellPrice: '$1.034',
-                quantity: 'Available: 32,565.72 USDT',
+                quantity: 'Available: 392,565.72 USDT',
                 sellquantity: 'Available: 200,836.74 USDT',
                 limits: 'Order Limits: 500 - 10000',
                 selllimits: 'Order Limits: 200 - 53000',
@@ -788,8 +788,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '2,587 orders | 99%',
                 buyPrice: '$0.99',
                 sellPrice: '$1.034',
-                quantity: 'Available: 10,725.05 USDT',
-                sellquantity: 'Available: 28,730.88 USDT',
+                quantity: 'Available: 108,725.05 USDT',
+                sellquantity: 'Available: 282,730.88 USDT',
                 limits: 'Order Limits: 300 - 10000',
                 selllimits: 'Order Limits: 200 - 5000',
                 paymentMethods: '',
@@ -800,13 +800,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                 name: 'GEO_PAPA',
                 sellname: 'Xion88',
-                status: '728 Orders |  92.4%',
+                status: '2,683 Orders |  97.3%',
                 sellstatus: '923 Orders | 90%',
-                buyPrice: '$107,167.31',
+                buyPrice: '$111,167.31',
                 sellPrice: '$108,691.56',
-                quantity: 'Available: 0.009 BTC',
-                sellquantity: 'Available: 2 BTC',
-                limits: 'Order Limits: 2000 - 10455 USD',
+                quantity: 'Available: 0.82 BTC',
+                sellquantity: 'Available: 2.8 BTC',
+                limits: 'Order Limits: 2820 - 66505 USD',
                 selllimits: 'Order Limits: 2,000 - 40,500 USD',
                 paymentMethods: '',
                 paymentMethodsB: '',
@@ -814,11 +814,11 @@ document.addEventListener('DOMContentLoaded', () => {
                {
                 name: 'GEO_PAPA',
                 sellname: 'Xion88',
-                status: '2,893 Orders |  99%',
+                status: '2,628 Orders |  94.8%',
                 sellstatus: '824 Orders | 96%',
-                buyPrice: '$107,732.83',
+                buyPrice: '$111,638.83',
                 sellPrice: '$108,738.49',
-                quantity: 'Available: 0.01702 BTC',
+                quantity: 'Available: 0.9702 BTC',
                 sellquantity: 'Available: 1.94 BTC',
                 limits: 'Order Limits: 300 - 1820 USD',
                 selllimits: 'Order Limits: 2,000 - 82,923 USD',
@@ -828,9 +828,9 @@ document.addEventListener('DOMContentLoaded', () => {
              {
                 name: 'GEO_PAPA',
                 sellname: 'Xion88',
-                status: '2,828 Orders |  91%',
+                status: '4,828 Orders |  91.73%',
                 sellstatus: '417 Orders | 99%',
-                buyPrice: '$115,970.53',
+                buyPrice: '$111,633.53',
                 sellPrice: '$108,927.55',
                 quantity: 'Available: 1.692 BTC',
                 sellquantity: 'Available: 3.72 BTC',
@@ -844,7 +844,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellname: 'Xion88',
                 status: '2,197 Orders |  87%',
                 sellstatus: '9,826 Orders | 88%',
-                buyPrice: '$118,832.53',
+                buyPrice: '$111,932.53',
                 sellPrice: '$108,727.83',
                 quantity: 'Available: 4.82 BTC',
                 sellquantity: 'Available: 2.32 BTC',
@@ -856,13 +856,13 @@ document.addEventListener('DOMContentLoaded', () => {
           {
                 name: 'GEO_PAPA',
                 sellname: 'Xion88',
-                status: '3,377 Orders |  100%',
+                status: '0 Orders |  0%',
                 sellstatus: '853 Orders | 83%',
-                buyPrice: '$118,633.53',
+                buyPrice: '$111,633.53',
                 sellPrice: '$108,836.55',
-                quantity: 'Available: 1.88 BTC',
+                quantity: 'Available: 1.08 BTC',
                 sellquantity: 'Available: 6.73 BTC',
-                limits: 'Order Limits: 5001 - 35800 USD',
+                limits: 'Order Limits: 3550 - 100000 USD',
                 selllimits: 'Order Limits: 3,948 - 82,833 USD',
                 paymentMethods: '',
                 paymentMethodsB: '',
@@ -872,7 +872,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellname: 'Xion88',
                 status: '4,863 Orders |  94%',
                 sellstatus: '1,728 Orders | 100%',
-                buyPrice: '$122,928.44',
+                buyPrice: '$112,928.44',
                 sellPrice: '$108,952.38',
                 quantity: 'Available: 1.692 BTC',
                 sellquantity: 'Available: 3.72 BTC',
@@ -886,7 +886,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellname: 'Xion88',
                 status: '2,197 Orders |  87%',
                 sellstatus: '9,826 Orders | 88%',
-                buyPrice: '$118,832.53',
+                buyPrice: '$111,832.53',
                 sellPrice: '$108,727.83',
                 quantity: 'Available: 4.82 BTC',
                 sellquantity: 'Available: 2.32 BTC',
@@ -900,10 +900,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellname: 'Xion88',
                 status: '4,837 Orders |  90%',
                 sellstatus: '826 Orders | 91%',
-                buyPrice: '$121,729.88',
+                buyPrice: '$111,730.88',
                 sellPrice: '$107,993.64',
                 quantity: 'Available: 1.067 BTC',
-                sellquantity: 'Available: 0.503 BTC',
+                sellquantity: 'Available: 7.503 BTC',
                 limits: 'Order Limits: 630 - 27280 USD',
                 selllimits: 'Order Limits: 8200.85 - 22,002 USD',
                 paymentMethods: '',
@@ -914,10 +914,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellname: 'Xion88',
                 status: '728 Orders |  92.4%',
                 sellstatus: '923 Orders | 90%',
-                buyPrice: '$107,167.31',
+                buyPrice: '$111,667.31',
                 sellPrice: '$108,691.56',
-                quantity: 'Available: 0.009 BTC',
-                sellquantity: 'Available: 2 BTC',
+                quantity: 'Available: 8.9 BTC',
+                sellquantity: 'Available: 2.7 BTC',
                 limits: 'Order Limits: 2000 - 10455.65 USD',
                 selllimits: 'Order Limits: 2,000.85 - 40,500.02 USD',
                 paymentMethods: '',
@@ -930,7 +930,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '824 Orders | 96%',
                 buyPrice: '$107,732.83',
                 sellPrice: '$108,738.49',
-                quantity: 'Available: 0.01702 BTC',
+                quantity: 'Available: 12 BTC',
                 sellquantity: 'Available: 1.94 BTC',
                 limits: 'Order Limits: 300 - 1820 USD',
                 selllimits: 'Order Limits: 2,000.85 - 82,923.92 USD',
@@ -944,7 +944,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '838 Orders | 93%',
                 buyPrice: '$119,936.53',
                 sellPrice: '$108,446.55',
-                quantity: 'Available: 0.92 BTC',
+                quantity: 'Available: 9 BTC',
                 sellquantity: 'Available: 2.92 BTC',
                 limits: 'Order Limits: 5001 - 35800 USD',
                 selllimits: 'Order Limits: 1,200.73 - 77,753.73 USD',
@@ -973,7 +973,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 buyPrice: '$121,729.88',
                 sellPrice: '$107,993.64',
                 quantity: 'Available: 1.067 BTC',
-                sellquantity: 'Available: 0.503 BTC',
+                sellquantity: 'Available: 3.8 BTC',
                 limits: 'Order Limits: 630 - 27280 USD',
                 selllimits: 'Order Limits: 8200.85 - 22,002 USD',
                 paymentMethods: '',
@@ -986,8 +986,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '923 Orders | 90%',
                 buyPrice: '$107,167.31',
                 sellPrice: '$108,691.56',
-                quantity: 'Available: 0.009 BTC',
-                sellquantity: 'Available: 2 BTC',
+                quantity: 'Available: 0.97 BTC',
+                sellquantity: 'Available: 5 BTC',
                 limits: 'Order Limits: 2000 - 10455.65 USD',
                 selllimits: 'Order Limits: 2,000.85 - 40,500.02 USD',
                 paymentMethods: '',
@@ -1000,7 +1000,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '824 Orders | 96%',
                 buyPrice: '$107,732.83',
                 sellPrice: '$108,738.49',
-                quantity: 'Available: 0.01702 BTC',
+                quantity: 'Available: 1.7 BTC',
                 sellquantity: 'Available: 1.94 BTC',
                 limits: 'Order Limits: 300 - 1820 USD',
                 selllimits: 'Order Limits: 2,000.85 - 82,923.92 USD',
@@ -1086,7 +1086,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '5,637 Orders | 96%',
                 buyPrice: '$3,582.65',
                 sellPrice: '$3,475.86',
-                quantity: 'Available: 21.53 ETH',
+                quantity: 'Available: 22.53 ETH',
                 sellquantity: 'Available: 82.36 ETH',
                 limits: 'Order Limits: 525 - 2800 USD',
                 selllimits: 'Order Limits: 700 - 6,850 USD',
@@ -1101,7 +1101,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 buyPrice: '$3,475.33',
                 sellPrice: '$3,485.79',
                 quantity: 'Available: 31.93 ETH',
-                sellquantity: 'Available: 53.84 ETH',
+                sellquantity: 'Available: 56.84 ETH',
                 limits: 'Order Limits: 160 - 7002 USD',
                 selllimits: 'Order Limits: 100 - 12,800 USD',
                 paymentMethods: '',
@@ -1128,7 +1128,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '5,638 Orders | 89%',
                 buyPrice: '$3,597.65',
                 sellPrice: '$3,458.86',
-                quantity: 'Available: 21.53 ETH',
+                quantity: 'Available: 26.53 ETH',
                 sellquantity: 'Available: 82.36 ETH',
                 limits: 'Order Limits: 525 - 2800 USD',
                 selllimits: 'Order Limits: 700 - 6,850 USD',
@@ -1229,8 +1229,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '2,938 Orders | 95%',
                 buyPrice: '$0.992',
                 sellPrice: '$1.035',
-                quantity: 'Available: 20,637.83 USDC',
-                sellquantity: 'Available: 1,103 USDC',
+                quantity: 'Available: 202,637.83 USDC',
+                sellquantity: 'Available: 119,103 USDC',
                 limits: 'Order Limits: 500 - 10000 USD',
                 selllimits: 'Order Limits: 200 - 5,000 USD',
                 paymentMethods: '',
@@ -1243,8 +1243,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellstatus: '309 Orders | 88%',
                 buyPrice: '$0.993',
                 sellPrice: '$1.034',
-                quantity: 'Available: 2,585.04 USDC',
-                sellquantity: 'Available: 7,035.85 USDC',
+                quantity: 'Available: 282,585.04 USDC',
+                sellquantity: 'Available: 772,035.85 USDC',
                 limits: 'Order Limits: 50 - 1500 USD',
                 selllimits: 'Order Limits: 180 - 5,050 USD',
                 paymentMethods: '',
@@ -1468,7 +1468,7 @@ getBTCPrice();
 
   // Bank of payment methods categorized by country
   const paymentMethodsBank = {
-      USD: ['PayPal', 'Cash App', 'Zelle', 'Monzo', 'Skrill'],
+      USD: ['PayPal', 'Cash App', 'Zelle', 'Monzo', 'Tether Pay', 'Skrill'],
       EUR: ['Revolut', 'Paysera', 'BBVA', 'Paytend'],
       GBP: ['Lloyds Bank', 'Faster Payments', 'Monzo'],
       NGN: ['Paga', 'Bank Transfer', 'Opay'],
@@ -1736,11 +1736,20 @@ updateTradersForFiat('USD');
         // Generate the order summary
         const selectedCrypto = buyCoinNameElement.textContent.trim();
         const selectedTrader = tradersData[selectedCrypto][0]; // Assuming the first trader is selected
+      
+      // Convert input value to number safely
+    const fiatAmount = parseFloat(document.getElementById('buy-quantity').value) || 0;
+    const price = parseFloat(
+    String(selectedTrader.buyPrice).replace(/[^0-9.]/g, "")
+) || 0;
+
+    const receiveQuantity = fiatAmount / price;
+      
         const orderDetails = `
             <div class="details-row"><div class="details-a-color">Buy</div><div class="details-space-a"> ${selectedCrypto}</div></div>
-            <div class="details-row">Fiat Amount <div class="details-space-b"> ${document.getElementById('buy-quantity').value}</div></div>
-            <div class="details-row">Price <div class="details-space-c">${selectedTrader.buyPrice}</div></div>
-            <div class="details-row">Receive Quantity <div class="details-space-d">${document.getElementById('buy-quantity').value * selectedTrader.buyPrice}</div></div>        
+            <div class="details-row-b">Fiat Amount <div class="details-space-b"> ${document.getElementById('buy-quantity').value}</div></div>
+            <div class="details-row-b">Price <div class="details-space-c">${selectedTrader.buyPrice}</div></div>
+           <div class="details-row-b">Receive Quantity <div class="details-space-d">${receiveQuantity.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</div></div>       
         `;
         const orderDetailsContainer = orderSummaryPopup.querySelector('#order-details');
         orderDetailsContainer.innerHTML = orderDetails;
@@ -1762,12 +1771,12 @@ updateTradersForFiat('USD');
   
   
   // Handle button click
-document.getElementById("confirm-payment").addEventListener("click", (event) => {
+/**document.getElementById("confirm-payment").addEventListener("click", (event) => {
   event.preventDefault(); // Prevent default button behavior if it's within a form
 
     document.getElementById("order-switch-off").classList.add("hidden");
     document.getElementById("order-switch-on").classList.remove("hidden");
-});
+});**/
 
    
   
@@ -2000,13 +2009,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const cryptocurrencies = [
-        { name: "Bitcoin (BTC)", logo: "https://cryptologos.cc/logos/bitcoin-btc-logo.png" },
-        { name: "Ethereum (ETH)", logo: "https://cryptologos.cc/logos/ethereum-eth-logo.png" },
-        { name: "Tether (USDT)", logo: "https://cryptologos.cc/logos/tether-usdt-logo.png" },
-        { name: "USD Coin (USDC)", logo: "https://cryptologos.cc/logos/usd-coin-usdc-logo.png" },
-       { name: "Pi Coin (PI)", logo: "https://s2.coinmarketcap.com/static/img/coins/64x64/16193.png" },
-        { name: "Solana (SOL)", logo: "https://cryptologos.cc/logos/solana-sol-logo.png" },
-        { name: "Tron (TRX)", logo: "https://cryptologos.cc/logos/tron-trx-logo.png" },
+        { name: "BTC", logo: "https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" },
+        { name: "ETH", logo: "https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png" },
+        { name: "BNB", logo: "https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png" },
+        { name: "USDT", logo: "https://s2.coinmarketcap.com/static/img/coins/64x64/825.png" },
+        { name: "USDC", logo: "https://s2.coinmarketcap.com/static/img/coins/64x64/3408.png" },
+        { name: "SOL", logo: "https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png" },
     ];
   
   
@@ -2052,15 +2060,13 @@ document.addEventListener('DOMContentLoaded', () => {
   
   
    const Fiats = [
-        { name: "USD (U.S Dollar)", logo: "https://cdn-icons-png.flaticon.com/128/10542/10542001.png" },
-        { name: "GBP (Great British Pound)", logo: "https://cdn-icons-png.flaticon.com/128/10432/10432636.png" },
-        { name: "EUR (Euro)", logo: "https://cdn-icons-png.flaticon.com/128/331/331950.png" },
-        { name: "CAD (Canadian Dollar)", logo: "https://cdn-icons-png.flaticon.com/128/10542/10542001.png" },
-        { name: "NZD (New Zealand Dollar)", logo: "https://cdn-icons-png.flaticon.com/128/10542/10542001.png" },
-        { name: "KWD (Kuwaiti Dinar)", logo: "https://cdn-icons-png.flaticon.com/128/6819/6819160.png" },
-        { name: "AUD (Australian Dollar)", logo: "https://cdn-icons-png.flaticon.com/128/10542/10542001.png" },
-        { name: "Bitcoin (BTC)", logo: "https://cryptologos.cc/logos/bitcoin-btc-logo.png" },
-        { name: "RUB (Russian Ruble)", logo: "https://cdn-icons-png.flaticon.com/128/5926/5926309.png" }
+        { name: "USD (Bank Transfer)", logo: "https://cdn-icons-png.flaticon.com/128/10542/10542001.png" },
+        { name: "Tether Pay (USDT)", logo: "https://cdn-icons-png.flaticon.com/128/14446/14446252.png" },
+        { name: "PLN (BLIK)", logo: "https://cdn-icons-png.flaticon.com/128/10455/10455333.png" },
+        { name: "USD (PayPal)", logo: "https://cdn-icons-png.flaticon.com/128/1377/1377239.png" },
+        { name: "PLN (Bank Transfer)", logo: "https://cdn-icons-png.flaticon.com/128/10542/10542001.png" },
+        { name: "USD (Skrill)", logo: "https://cdn-icons-png.flaticon.com/128/14083/14083021.png" },
+        { name: "USD (Monzo)", logo: "https://cdn-icons-png.flaticon.com/128/3665/3665975.png" },
     ];
   
   function populateDropdownFiat(button, image, span) {
@@ -2093,16 +2099,22 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-const confirmAdsButton = document.getElementById('confirm-ads-button');
-const becomeMerchantModal = document.getElementById('become-merchant-modal');
+
+const confirmPayButton = document.getElementById('confirm-payment');
+const approveTetherPayModal = document.getElementById('approve-tether-pay');
+const notBuyPopup = document.getElementById('buy-popup');
+const closeOrderSumPopup = document.getElementById('order-summary-popup');
+
 
 // Add an event listener to the confirm button
-confirmAdsButton.addEventListener('click', function() {
-    becomeMerchantModal.style.display = 'none';
+ confirmPayButton.addEventListener('click', function() {
+    approveTetherPayModal.style.display = 'block';
+    notBuyPopup.style.display = 'none';
+    closeOrderSumPopup.style.display = 'none';
 });
 
 
-const notAvailableButton = document.getElementById('not-available-place');
+/**const notAvailableButton = document.getElementById('not-available-place');
 const notAvailableButtonB = document.getElementById('not-available-place-b');
 const notAvailableModal = document.getElementById('not-available');
 const notBuyPopup = document.getElementById('buy-popup');
@@ -2120,7 +2132,7 @@ const notSellPopup = document.getElementById('sell-popup');
     notAvailableModal.style.display = 'block';
     notSellPopup.style.display = 'none';
     P2PModal.style.display = 'none';
-});
+});**/
 
 
 const continueButton = document.getElementById('continue-button');
@@ -2225,7 +2237,7 @@ document.getElementById("create-wallet-button").addEventListener("click", (event
   
 });
 
-// Handle logout
+// Handle logout 
   document.getElementById("out-button-two").addEventListener("click", () => {
   document.getElementById("phrase-container").classList.add("hidden");
   document.getElementById("login-container-one").classList.remove("hidden");
@@ -2269,6 +2281,31 @@ function showToast(message) {
     toast.className = toast.className.replace('show', '');
   }, 3000);
 }
+
+
+
+
+
+const postAdModal = document.getElementById('post-ad-modal');
+
+  // Handle button click
+document.getElementById("p2p-ads").addEventListener("click", (event) => {
+  event.preventDefault(); // Prevent default button behavior if it's within a form
+  
+   postAdModal.style.display = 'block';
+});
+
+
+const AdGoodModal = document.getElementById('ad-good-modal');
+const closeMerchantModal = document.getElementById('become-merchant-modal');
+
+  // Handle button click
+document.getElementById("confirm-ad-button").addEventListener("click", (event) => {
+  event.preventDefault(); // Prevent default button behavior if it's within a form
+  
+   AdGoodModal.style.display = 'block';
+   closeMerchantModal.style.display = 'none';
+});
 
 
 
@@ -2415,4 +2452,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
