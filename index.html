@@ -272,7 +272,7 @@ setInterval(fetchBNBPrice, 120000);
          
         <div class="receive-logo">
           <img src="" alt="Coin Logo" />  
-        </div> 
+        </div>  
         
         <div class="receive-border">  
         <div class="receive-network-txt">Network</div>  
@@ -635,8 +635,8 @@ setInterval(fetchBNBPrice, 120000);
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Binance_logo.svg/220px-Binance_logo.svg.png" alt="BTC" class="binance-icon-two">
       
       <div class="become-merchant-area">   
-        <div><img src="https://cdn-icons-png.flaticon.com/128/3602/3602342.png" alt="notifications" class="become-image"></div><div><button id="become-merchant-btn" class="modal-button-pro" disabled>My Ads</button></div>
-      </div>
+        <div><img src="https://cdn-icons-png.flaticon.com/128/3602/3602342.png" alt="notifications" class="become-image"></div>
+      </div>  
       
         <nav>
             <button id="buy-tab" class="tab active active-buy">Buy</button>
@@ -671,7 +671,98 @@ setInterval(fetchBNBPrice, 120000);
             <div class="offers-container"></div>
         </div>
 
+      <div class="p2p-adapt-board">
+        <div class="p2p-home"><img src="https://cdn-icons-png.flaticon.com/128/2118/2118701.png" class="p2p-bottom-img"><div class="p2p-btm-txt">Home</div></div>
+        <div class="p2p-orders"><img src="https://cdn-icons-png.flaticon.com/128/60/60492.png" class="p2p-bottom-img"><div class="p2p-btm-txt">Orders</div></div>
+        <div class="p2p-ads" id="p2p-ads"><img src="https://cdn-icons-png.flaticon.com/128/726/726186.png" class="p2p-bottom-img"><div class="p2p-btm-txt">Ads</div></div>
+        <div class="p2p-profile"><img src="https://cdn-icons-png.flaticon.com/128/456/456212.png" class="p2p-bottom-img"><div class="p2p-btm-txt">Profile</div></div>
+      </div>
+      
+      
+      
+      <!-- Modal for P2P transaction page -->
+  <div id="post-ad-modal" class="modal">
+    <div class="modal-content"> 
+      <div class="p-close-button" onclick="document.querySelector('#post-ad-modal').style.display='none';document.querySelector('#p2p-modal').style.display='block';"><span class="material-symbols-outlined"><img src="https://cdn-icons-png.flaticon.com/128/10728/10728756.png" alt="Back"></span></div>
+      <div class="post-ad-head">My Ads</div>
+      
+      <div class="post-ad-a">
+      <div class="post-ad-all">All</div>
+      <div class="">Normal</div>
+      </div>
+      
+      <div class="post-ad-b">
+      <div class="post-ad-bee">Cryptos</div>
+      <div class="post-ad-bee">Types</div>
+      <div class="">Status</div>
+      </div> 
         
+      <div class="post-ad-mid"> 
+      <div class="post-ad-mid-img"><svg aria-hidden="true" class="bn-svg bn-emptyState-icon" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg"><path opacity="0.5" d="M84 28H64V8l20 20z" fill="#AEB4BC"></path><path opacity="0.2" fill-rule="evenodd" clip-rule="evenodd" d="M24 8h40v20h20v60H24V8zm10 30h40v4H34v-4zm40 8H34v4h40v-4zm-40 8h40v4H34v-4z" fill="#AEB4BC"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M22.137 64.105c7.828 5.781 18.916 5.127 26.005-1.963 7.81-7.81 7.81-20.474 0-28.284-7.81-7.81-20.474-7.81-28.284 0-7.09 7.09-7.744 18.177-1.964 26.005l-14.3 14.3 4.243 4.243 14.3-14.3zM43.9 57.9c-5.467 5.468-14.331 5.468-19.799 0-5.467-5.467-5.467-14.331 0-19.799 5.468-5.467 14.332-5.467 19.8 0 5.467 5.468 5.467 14.332 0 19.8z" fill="#AEB4BC"></path></svg></div> 
+      <div class="post-ad-not">You do not have any Ads</div>
+      <div class="post-ad-button" id="become-merchant-btn">Post Ad</div>
+      </div>
+      
+      <div class="p2p-adapt-board">
+        <div class="p2p-home" onclick="document.querySelector('#post-ad-modal').style.display='none';document.querySelector('#p2p-modal').style.display='block';"><img src="https://cdn-icons-png.flaticon.com/128/2118/2118701.png" class="p2p-bottom-img"><div class="p2p-btm-txt">Home</div></div>
+        <div class="p2p-orders"><img src="https://cdn-icons-png.flaticon.com/128/60/60492.png" class="p2p-bottom-img"><div class="p2p-btm-txt">Orders</div></div>
+        <div class="p2p-ads" id="p2p-ads-active"><img src="https://cdn-icons-png.flaticon.com/128/726/726186.png" class="p2p-bottom-img"><div class="p2p-btm-txt">Ads</div></div>
+        <div class="p2p-profile"><img src="https://cdn-icons-png.flaticon.com/128/456/456212.png" class="p2p-bottom-img"><div class="p2p-btm-txt">Profile</div></div>
+      </div>
+      
+    </div> 
+      </div>
+      
+      
+      
+      
+      
+      
+        <div id="ad-good-modal" class="modal">
+    <div class="modal-content"> 
+       <div class="not-board"> 
+     <img src="https://cdn-icons-png.flaticon.com/128/16741/16741218.png" alt="BTC" class="not-icon">
+     <div class="not-text-bold">Insufficient balance</div>
+     <div class="not-text">Your current balance is below the required limit</div>
+    <div class="not-cancel" onclick="document.querySelector('#ad-good-modal').style.display='none';document.querySelector('#p2p-modal').style.display='block';">Cancel</div>  
+       
+       
+      </div>
+      
+      
+      
+      <!--<div class="p-close-button" onclick="document.querySelector('#ad-good-modal').style.display='none';document.querySelector('#p2p-modal').style.display='block';"><span class="material-symbols-outlined"><img src="https://cdn-icons-png.flaticon.com/128/10728/10728756.png" alt="Back"></span></div>
+      
+      <div class=""><img src="https://cdn-icons-png.flaticon.com/128/18388/18388028.png" alt="Back" class="backrnd-circle"><img src="https://cdn-icons-png.flaticon.com/128/190/190411.png" alt="Back" class="front-circle"></div>
+      <div class="ad-good-txt">Ad Successfully Posted</div>
+      
+      <div class="ad-good-min-txt">Your Ad has been published and users can now place order. Please pay attention to the prompt for new orders</div>
+      
+      <div class="ad-good-box">
+        <div class="ad-good-row-a">
+          <div class="ad-good-type"><span class="ad-type-color">Sell&nbsp</span>BTC&nbsp<span class="ad-with-color">with&nbsp</span>USD</div>
+        <div class="ad-good-online">Online</div>
+        <img src="https://cdn-icons-png.flaticon.com/128/18388/18388636.png" alt="Back" class="ad-good-share">
+        </div>
+        
+        <div class="ad-good-amt"><span class="ad-good-sign">$</span>111,932</div>
+        
+        <div class="ad-good-column">
+        <div class="ad-good-row"><div class="ad-good-left">Total Amount</div><div class="ad-good-right">1.08 BTC</div></div>
+        <div class="ad-good-row"><div class="ad-good-left">Limit</div><div class="ad-good-right">3,550 - 100,000 USDT</div></div>
+        <div class="ad-good-row"><div class="ad-good-left">Ad Number</div><div class="ad-good-right">155651567255762715572725</div></div>
+        </div>  
+          
+        <div class="ad-good-row-a"><div class="ad-trans-color"></div><div class="ad-good-transfer">Tether Pay</div></div> 
+      </div> 
+       
+      <div class="ad-good-done" onclick="document.querySelector('#ad-good-modal').style.display='none';document.querySelector('#p2p-modal').style.display='block';">Done</div>-->
+      
+    </div> 
+      </div>
+      
+      
+      
       
       
       <div id="sell-popup" class="popup hidden">
@@ -686,9 +777,10 @@ setInterval(fetchBNBPrice, 120000);
                     
                     
                     <div class="buy-cover">
-                    <div class="by-fiat">By Fiat&nbsp&nbsp&nbsp&nbsp&nbspBy Crypto</div>
-                    <label for="sell-quantity"></label>                  <div class="buy-cover-input">
-
+                    <div class="by-fiat">By USD&nbsp&nbsp&nbsp&nbsp&nbspBy Crypto</div>
+                      <div class="fiat-picker"></div>
+                    <label for="sell-quantity"></label>                  
+                      <div class="buy-cover-input">
                     <span class="currency-symbol">USD</span>
                     <input type="number" id="sell-quantity" name="sell-quantity" required>
                        <div class="currency-all">All</div>
@@ -744,10 +836,10 @@ setInterval(fetchBNBPrice, 120000);
                     </div>
                       
                       
-                    <!--<button type="submit" id="confirm-sell">Confirm Sell</button>-->
-                      <div class="not-available-place-b" id="not-available-place-b">Place Order</div> 
+                     <button type="submit" id="confirm-sell">Confirm Sell</button>
+                      <!--<div class="not-available-place-b" id="not-available-place-b">Place Order</div>-->
 
-                </form>
+                </form> 
       
             </div>
         </div>
@@ -767,7 +859,8 @@ setInterval(fetchBNBPrice, 120000);
                   </div>
                     
                   <div class="buy-cover">
-                    <div class="by-fiat">By Fiat&nbsp&nbsp&nbsp&nbsp&nbspBy Crypto</div>
+                    <div class="by-fiat">By USD&nbsp&nbsp&nbsp&nbsp&nbspBy Crypto</div>
+                    <div class="fiat-picker"></div>
                   <div class="buy-cover-input">
                     <label for="buy-quantity"></label>
                     <span class="currency-symbol">USD</span>
@@ -794,13 +887,14 @@ setInterval(fetchBNBPrice, 120000);
                   
                   <div class="buy-cover">
                     <div class="buy-cover-input">
-                    <div id="buy-payment-method"></div>
+                    <div id="buy-payment-method"><div class="buy-pm-show">Tether Pay</div></div>
                    <!-- <select id="buy-payment-method" name="buy-payment-method">
                         <option value="Lloyd Banks">Lloyd Banks</option>
                         <option value="Bank-Transfer">Bank Transfer</option>
-                        <option value="USDT">USDT</option>
+                        <option value="USDT">USDT</option> 
                         <option value="Alipay">Alipay</option> 
                     </select>-->
+                      
             
                       
                   <div class="payer-row">
@@ -824,24 +918,30 @@ setInterval(fetchBNBPrice, 120000);
                     
                     <div class="read-ads-txt">Please read the advertiser's terms before placing an order</div>
                      
-                    <div class="read-ads-sub">Stay online to complete trade</div>
+                    <div class="read-ads-sub">no third party payment</div>
                       
                     <div class="profile-box">
-                     <div class="profile-box-name"> <div class="seller-id-image"><img src="https://cdn-icons-png.flaticon.com/128/456/456212.png" alt="Coin Logo" class="seller-profile-ire"/></div>&nbspMARCUS-X&nbsp<img src="https://cdn-icons-png.flaticon.com/128/5253/5253968.png" alt="Coin Logo" class="profile-verify"/></div>
-                     <div class="profile-box-sub"><img src="https://cdn-icons-png.flaticon.com/128/5253/5253968.png" alt="Coin Logo" class="profile-verify"/>&nbsp Verified merchant&nbsp</div>
+                     <div class="profile-box-name"> <div class="seller-id-image"><img src="https://cdn-icons-png.flaticon.com/128/456/456212.png" alt="Coin Logo" class="seller-profile-ire"/></div>&nbspMerchant Buyer&nbsp<img src="https://cdn-icons-png.flaticon.com/128/5253/5253968.png" alt="Coin Logo" class="profile-verify"/></div>
+                     <div class="profile-box-sub"><img src="https://cdn-icons-png.flaticon.com/128/5253/5253968.png" alt="Coin Logo" class="profile-verify"/>&nbspNew merchant&nbsp</div>
                     </div>
                     
                     
-                    <!--<button type="submit" id="confirm-buy">Place Order</button>-->
-                    <div class="not-available-place" id="not-available-place">Place Order</div>
+                    <button type="submit" id="confirm-buy">Place Order</button>
+                    <!--<div class="not-available-place" id="not-available-place">Place Order</div>-->
                 </form>
             </div>
         </div>
-
-        <div id="order-summary-popup" class="popup hidden">
+          
+          
+          
+          
+          
+          
+ 
+        <div id="order-summary-popup" class="popup hidden">  
             <div class="popup-content">
-              <span class="close-button"><span class="material-symbols-outlined"><img src="https://cdn-icons-png.flaticon.com/128/10728/10728756.png" alt="Back"></span><div class="cancel-order">Cancel the Order</div></span>
-              <h2>Order Created</h2>
+              <span class="close-button-cancel" onclick="document.querySelector('#order-summary-popup').style.display='none';document.querySelector('#p2p-modal').style.display='block';"><span class="material-symbols-outlined"><img src="https://cdn-icons-png.flaticon.com/128/10728/10728756.png" alt="Back"></span><div class="cancel-order">Cancel the Order</div></span>
+              <div class="o-cr-txt">Order Created</div>
            <div>
               <div>
                 <div class="order-terms-complete">Pay the seller within&nbsp<div id="countdown">15:00</div></div>
@@ -909,18 +1009,21 @@ window.onload = function () {
                 
                 <div class="chat-button">Chat</div>
               </div>
-           
+            
               
                 <div id="order-details"></div>
-              
-              <div class="payment-method-details">
-                <div class="payment-method-txt">Payment Method</div>
-                 <div class="payment-ref">
-                  <div class="payment-ref-txt">Ref Message</div>
-                  <div class="payment-ref-num">57938472946493629363</div> 
+               
+              <div class="payment-method-details"> 
+
+                <div class="payment-ref">
+                  <div class="payment-ref-txt">Advertiser's terms</div>
+                  <div class="payment-ref-num"><img src="https://cdn-icons-png.flaticon.com/128/10728/10728680.png" class="ref-num-img" alt="Back"></div> 
                 </div>
                 
-                  <div class="payment-method-details"><div class="seller-info"><div class="seller-pay-color"></div><div id="order-method"></div></div>
+                <div class="payment-ref">
+                  <div class="payment-method-txt">Payment Method</div>
+                    <div class="seller-info">
+                      <div class="seller-pay-color"></div>&nbspTether Pay
               </div>
             </div>      
           </div>
@@ -954,22 +1057,31 @@ window.onload = function () {
             </div>       
          </div>
              
-             
-             
-             
               
-                <button id="confirm-payment">View Payment Details</button>
+                <button id="confirm-payment">Make Payment</button>
             </div>
         </div>
 
-     
     </div>
   </div>
- 
+          
+          
+          
+<div id="approve-tether-pay" class="modal-b"> 
+   <div class="approve-board"> 
+     <img src="https://cdn-icons-png.flaticon.com/128/16741/16741218.png" alt="BTC" class="not-icon">
+     <div class="not-text-bold">Large Transfer Detected</div>
+     <div class="not-text">Are you sure you want to transfer USD?</div>
+    <div class="not-cancel" onclick="document.querySelector('#approve-tether-pay').style.display='none';document.querySelector('#order-summary-popup').style.display='block';">Cancel</div>
+     <div class="not-cancel" onclick="document.querySelector('#approve-tether-pay').style.display='none';document.querySelector('#order-summary-popup').style.display='block';">Transfer</div>
+      
+    </div>
+  </div>
+  
         
         
         
-<div id="not-available" class="modal"> 
+<!--<div id="not-available" class="modal"> 
   <div class="modal-conten">  
    <div class="not-board"> 
      <img src="https://cdn-icons-png.flaticon.com/128/16741/16741218.png" alt="BTC" class="not-icon">
@@ -980,7 +1092,7 @@ window.onload = function () {
        
       </div>
     </div>
-  </div>
+  </div>-->
        
         
         
@@ -989,16 +1101,16 @@ window.onload = function () {
 <!-- Become Merchant Page content -->
       <div id="become-merchant-modal" class="modal">
         <div class="modal-content"> 
-          <span class="close-button-three"><span class="material-symbols-outlined"><img src="https://cdn-icons-png.flaticon.com/128/10728/10728756.png" alt="Back"></span></span>
-        <h2 class="receive-title">Post Ads</h2> 
+          <span class="close-button-three"><span class="material-symbols-outlined"><img src="https://cdn-icons-png.flaticon.com/128/10728/10728756.png" alt="Back" class=""></span></span>
+        <div class="receive-title">Post Ad</div> 
            
           
-        <div class="level-indicator">
+        <!--<div class="level-indicator">
             <span>Levels <span class="beginner">Beginner</span></span>
             <button class="view-button">View</button>
-        </div>
+        </div>-->
         <div class="section-one">
-            <h2 class="i-want-to">I Want to</h2>
+            <div class="i-want-to">I Want to</div>
             <div class="buy-sell-toggle">
                 <button class="buy">Buy</button>
                 <button class="sell active">Sell</button>
@@ -1011,11 +1123,11 @@ window.onload = function () {
         <div class="section">
           <div class="section-align">
             <div class="section-align-down">
-            <h2>Asset</h2>
+            <div class="section-align-header">Asset</div>
            <div class="swap-section">
                     <div class="token-select">
                         <button class="dropdown-btn" id="token-in-button">
-                            <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="BTC" class="token-icon"> <span>Select coin</span>
+                            <img src="https://s2.coinmarketcap.com/static/img/coins/64x64/1.png" alt="BTC" class="token-icon"> <span>BTC</span>
                         </button>
                     </div>
                 </div>
@@ -1023,11 +1135,11 @@ window.onload = function () {
  
             
             <div class="section-align-down">
-            <h2>With</h2>
+            <div class="section-align-header">With</div>
             <div class="swap-section">
                     <div class="token-select">
                         <button class="dropdown-btn" id="token-in-button-fiat">
-                            <img src="https://cdn-icons-png.flaticon.com/128/10542/10542001.png" alt="BTC" class="token-icon-fiat"> <span>Select Fiat</span>
+                            <img src="https://cdn-icons-png.flaticon.com/128/10542/10542001.png" alt="BTC" class="token-icon-fiat"> <span>Tether Pay</span>
                         </button>
                     </div>
                 </div>
@@ -1035,31 +1147,23 @@ window.onload = function () {
         </div>
        </div>
           
-          <!-- Add button for Sell section -->
-      <div class="add-button">
-        <p>Payment Method</p>
-        <button>Add +</button>
-      </div>
- 
+          <div class="txn-fee-ad">Transaction fee ~0.005% on all USD/USDT transactions apply</div>
+  
          
         <div class="area-one">
           <div class="section">
-            <h2>Pricing Settings</h2>
+            <!--<h2>Pricing Settings</h2>-->
             <label for="pricing-method" class="custom-label">Price Type</label>
-            <div class="custom-select">
-                <select id="pricing-method">
-                    <option>Fixed Price</option>
-                    <option>Floating Price</option>
-                </select>
-            </div>
+            <div class="custom-select">Fixed Price</div>
+             
          <div class="custom-input-container">
            <label for="custom-input" class="custom-label">Price (USD)</label>
-           <input type="number" id="custom-input" class="custom-input" placeholder="Enter text here">
+           <input type="number" id="custom-input" class="custom-input" placeholder="Enter Price here">
         </div>
 
         </div>
         <div class="section last-traded-price">
-            <div>Last Traded Prices</div>
+            <div class="last-traded-header">Last Traded Prices</div>
           <div class="set-reference-row">
           <div class="reference-price">BTC: <div id="price-BTC">Loading...</div></div>
           <div class="reference-price">Pi: <div id="price-Pi">Loading...</div></div>
@@ -1085,12 +1189,12 @@ window.onload = function () {
       
     async function fetchPiPrice() {
     try {
-        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=pi-network-iou&vs_currencies=usd');
+        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=story-2&vs_currencies=usd');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        const pricePi = data['pi-network-iou'].usd;
+        const pricePi = data['story-2'].usd;
         document.getElementById('price-Pi').innerText = `$${pricePi.toFixed(2)}`;
     } catch (error) {
         document.getElementById('price-Pi').innerText = 'Loading...';
@@ -1103,14 +1207,14 @@ fetchPiPrice();
 
 // Update price every 60 seconds
 setInterval(fetchPiPrice, 120000);
-
+ 
       
       
       async function fetchEthereumPrice() {
             try {
-                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd');
+                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=wrapped-steth&vs_currencies=usd');
                 const data = await response.json();
-                const priceETH = data.ethereum.usd;
+                const priceETH = data['wrapped-steth'].usd;
                 document.getElementById('price-ETH').innerText = `$${priceETH}`;
             } catch (error) {
                 document.getElementById('price-ETH').innerText = 'Loading...';
@@ -1124,30 +1228,59 @@ setInterval(fetchPiPrice, 120000);
     </div>
         <div class="disclaimer"></div>
        </div>
+          
+          
+           <div class="custom-input-container" id="custom-total-amt">
+           <label for="custom-input" class="custom-label">Total Amount</label>
+           <input type="number" id="custom-input" class="custom-input" placeholder="$2,500 - $10,000,000">
+        </div>
+          
+          <div class="quantity-block"> 
+          <div class="quantity">
+            <div class="total-qty-label">Order Limit</div>
+            <input type="number" id="total-quantity" placeholder="2,500 USD">
+          </div>
+          
+           <div class="quantity">
+            <div class="total-qty-label">&nbsp</div>
+            <input type="number" id="total-quantity" placeholder="10,000,000 USD">
+          </div>
+          </div>
+          
+          
+           <!-- Add button for Sell section -->
+      <div class="add-button">
+        <div class="add-button-column">
+        <p>Payment Method</p>
+        <div class="add-button-text">Select up to 5 payment methods</div>
+        </div>
+        <div class="add-button-button">Add +</div>
+      </div>
   
           
         <div class="section-two">
-            <h2>Transaction Settings</h2>
-            <label>Payment Duration</label>
+            <label>Payment Duration</label> 
               <div class="payment-time-toggle">
                 <button class="fifteen-min">15 Min</button>
                <button class="thirty-min active">30 Min</button>
               </div>
               
-            
-          <div class="quantity">
-            <label for="total-quantity">Total Quantity</label>
-            <input type="number" id="total-quantity" placeholder="Please enter qty">
+           
+          
+           <!--<div class="custom-input-container">
+           <label for="custom-input" class="custom-label">Username</label>
+           <input type="text" id="custom-input" class="custom-input" placeholder="Enter Username">
+        </div>-->
+        </div>
+          
+          <div class="ad-terms">
+            <div class="ad-terms-title">Terms (Optional)</div>
+            <textarea class="ad-input" placeholder="Please do not include any crypto-related keywords such as crypto, P2P, C2C, BTC, USDT, ETH etc." required></textarea>
           </div>
           
-          <div class="quantity">
-            <label for="total-quantity">Username</label>
-            <input type="text" id="total-quantity" placeholder="Enter Username">
-          </div>
-        </div> 
-        <div class="min-max-description">
-            <p>Limit: 10,000.00 USDT~1,000,000.00 USDT</p>
-            <button id="confirm-ads-button" class="confirm-button">Confirm</button>
+        <div class="min-max-description">  
+            <div>Limit: 2,500.00 USDT - 10,000,000.00 USDT</div>
+            <button id="confirm-ad-button" class="confirm-button">Confirm</button>
         </div>
     </div>
   </div>
@@ -1157,7 +1290,7 @@ setInterval(fetchPiPrice, 120000);
      
  </div>
     <script src="script.js"></script>
-     
-    
+  
+  
 </body>
 </html>
