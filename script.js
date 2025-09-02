@@ -799,10 +799,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                 name: 'GEO_PAPA',
                 sellname: 'Xion88',
-                status: '2,683 Orders |  97.3%',
-                sellstatus: '923 Orders | 90%',
-                buyPrice: '$111,167.31',
-                sellPrice: '$108,691.56',
+                status: '2,648 Orders |  97.3%',
+                sellstatus: '728 Orders | 90%',
+                buyPrice: '$109,167.31',
+                sellPrice: '$106,691.56',
                 quantity: 'Available: 0.82 BTC',
                 sellquantity: 'Available: 2.8 BTC',
                 limits: 'Order Limits: 2820 - 66505 USD',
@@ -815,8 +815,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellname: 'Xion88',
                 status: '2,628 Orders |  94.8%',
                 sellstatus: '824 Orders | 96%',
-                buyPrice: '$111,638.83',
-                sellPrice: '$108,738.49',
+                buyPrice: '$109,638.83',
+                sellPrice: '$106,738.49',
                 quantity: 'Available: 0.9702 BTC',
                 sellquantity: 'Available: 1.94 BTC',
                 limits: 'Order Limits: 300 - 1820 USD',
@@ -2451,5 +2451,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
 
 
