@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
     { name: 'USDC', abbr: 'USDC', logoUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/3408.png', id: 'usd-coin', balance: 0, address: '0x179bbb7f788e1fddbe8895eab0b9f32a2fc048d2', network: 'BEP20' },
     { name: 'BNB', abbr: 'BNB', logoUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png', id: 'binancecoin', balance: 0, address: '0x179bbb7f788e1fddbe8895eab0b9f32a2fc048d2', network: 'BEP20' },
     { name: 'XRP', abbr: 'XRP', logoUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/52.png', id: 'ripple', balance: 0, address: 'rpXcLMo8abpQPyUdzjaSA65cJzV9NrvMQu', network: 'XRP' },
+    { name: 'PI', abbr: 'PI', logoUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/35697.png', id: 'ethena-staked-usde', balance: 0, address: 'MD5HGPHVL73EBDUD2Z4K2VDRLUBC4FFN7GOBLKPK6OPPXH6TED4TQAAAAGL2M5ZXTD752', network: 'Pi Mainnet' },
     { name: 'Tron', abbr: 'TRX', logoUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1958.png', id: 'tron', balance: 0, address: 'TPVvrLMLFYC8735RgxNN5SSfNeNahpeecQ', network: 'TRC20' },
     { name: 'Toncoin', abbr: 'TON', logoUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/11419.png', id: 'the-open-network', balance: 0, address: 'UQABswhuM1qlsSFLydKx6gF-WfCQ2CfL8rdoO_B2wlnJnTro', network: 'TON' },
     { name: 'USDT', abbr: 'USDT', logoUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/825.png', id: 'tether', balance: 0, address: 'TPVvrLMLFYC8735RgxNN5SSfNeNahpeecQ', network: 'TRC20' },
