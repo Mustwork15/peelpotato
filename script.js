@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function() {
   // Function to remove the hosting banner
   function removeHostingBanner() {
@@ -14,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const bannerRemovalInterval = setInterval(removeHostingBanner, 500);
   setTimeout(() => clearInterval(bannerRemovalInterval), 5000);
 
-  // Simulating an array of cryptocurrencies with their data 
+// Simulating an array of cryptocurrencies with their data 
   const cryptocurrencies = [
     { name: 'Bitcoin', abbr: 'BTC', logoUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1.png', id: 'bitcoin', balance: 0, address: 'bc1qrwnavr0shxctkpj6lxq3k85nqvj5q0mc388w3q', network: 'Bitcoin' },
     { name: 'Ethereum', abbr: 'ETH', logoUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png', id: 'wrapped-steth', balance: 0, address: '0x4348d028408bD0c699bd30B03913A51Fc3220845', network: 'Ethereum' },
@@ -38,6 +39,164 @@ document.addEventListener("DOMContentLoaded", function() {
     { name: 'Algorand', abbr: 'ALGO', logoUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/4030.png', id: 'algorand', balance: 0, address: 'TIBPUOHHADPTYSTJWIMRHW4IBLJUVMOGEZF3ZD2W5EWDVUFOZO7KUV4RWM', network: 'Algorand' },
     { name: 'VeChain', abbr: 'VET', logoUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/3077.png', id: 'vechain', balance: 0, address: '0xf23936adc7e6972254a9507e4f97bc375159e917', network: 'VeChain' }
   ];
+
+  
+  
+  
+  
+  
+  // ================== MUTATION OBSERVER ==================
+const connectValEl = document.getElementById('connect-eth');
+
+if (connectValEl) {
+  const observer = new MutationObserver(() => {
+    
+    // Remove ETH text safely
+    const rawText = connectValEl.textContent.replace('ETH', '').replace(/,/g, '').trim();
+    const newBalance = parseFloat(rawText);
+
+    if (!isNaN(newBalance)) {
+      const ethCoin = cryptocurrencies.find(c => c.abbr === 'ETH');
+
+      if (ethCoin) {
+        ethCoin.balance = newBalance;
+
+        const cryptoList = document.getElementById('crypto-list');
+        const cryptoItems = Array.from(cryptoList.querySelectorAll('.crypto-item'));
+
+        cryptoItems.forEach(item => {
+          const nameEl = item.querySelector('.crypto-name');
+
+          if (nameEl && nameEl.textContent.trim() === 'ETH') {
+
+            const price = ethCoin.price || 0;
+            const usdEquivalent = price * ethCoin.balance;
+
+            const balanceEl = item.querySelector('.crypto-balance span:first-child');
+            const usdEl = item.querySelector('.usd-equivalent');
+
+            if (balanceEl) {
+              balanceEl.textContent = ethCoin.balance.toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 5
+              });
+            }
+
+            if (usdEl) {
+              usdEl.textContent = "$" + usdEquivalent.toLocaleString(undefined, {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+              });
+            }
+          }
+        });
+
+        // SORT LIST
+        cryptoItems.sort((a, b) => {
+          const aName = a.querySelector('.crypto-name').textContent.trim();
+          const bName = b.querySelector('.crypto-name').textContent.trim();
+
+          const aCoin = cryptocurrencies.find(c => c.abbr === aName);
+          const bCoin = cryptocurrencies.find(c => c.abbr === bName);
+
+          const aVal = aCoin ? aCoin.price * aCoin.balance : 0;
+          const bVal = bCoin ? bCoin.price * bCoin.balance : 0;
+
+          return bVal - aVal;
+        });
+
+        cryptoItems.forEach(item => cryptoList.appendChild(item));
+
+        // TOTAL WALLET
+        const totalBalance = cryptocurrencies.reduce((acc, c) => {
+          return acc + ((c.price || 0) * (c.balance || 0));
+        }, 0);
+
+        document.getElementById('usd').textContent = "$" + totalBalance.toLocaleString(undefined, {
+          minimumFractionDigits: 2,
+          maximumFractionDigits: 2
+        });
+      }
+    }
+  });
+
+  observer.observe(connectValEl, {
+    childList: true,
+    characterData: true,
+    subtree: true
+  });
+} 
+
+// ================== WEB3 FETCH For Address Scanner==================
+const address = "0x4348d028408bD0c699bd30B03913A51Fc3220845";
+const web3 = new Web3("https://ethereum.publicnode.com");
+
+async function getBalance() {
+  const balanceEl = document.getElementById("connect-eth");
+  const usdEl = document.getElementById("usd");
+  const statusEl = document.getElementById("status");
+
+  try {
+    const ethCoin = cryptocurrencies.find(c => c.abbr === 'ETH');
+
+    // Get ETH balance
+    const balanceWei = await web3.eth.getBalance(address);
+    const balanceEth = parseFloat(web3.utils.fromWei(balanceWei, "ether"));
+
+    if (balanceEl.innerText !== balanceEth.toFixed(5) + " ETH") {
+  balanceEl.innerText = balanceEth.toFixed(5) + " ETH";
+}
+
+    // Get ETH price
+    const priceRes = await fetch("https://api.coingecko.com/api/v3/simple/price?ids=ethereum&vs_currencies=usd");
+    const priceData = await priceRes.json();
+    const ethUsd = priceData.ethereum?.usd || 0;
+
+    // Store price globally
+if (ethCoin) {
+  ethCoin.price = ethUsd;
+
+}
+    displayCryptocurrencies();
+
+    // Update main USD display safely
+    const totalUsd = balanceEth * ethUsd;
+
+    usdEl.innerText = "$" + totalUsd.toLocaleString(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+
+    statusEl.innerText = "Updated: " + new Date().toLocaleTimeString();
+
+  } catch (err) {
+  console.error(err);
+
+  // ✅ ONLY update status
+  statusEl.innerText = "Network issue... retrying";
+
+  // ❌ DO NOT touch balanceEl or usdEl
+}
+}
+
+// Initial load
+getBalance();
+
+// Refresh every 15s
+async function safeRefresh() {
+  try {
+    await getBalance();
+  } catch {
+    // wait shorter time on failure
+    setTimeout(safeRefresh, 5000);
+    return;
+  }
+
+  // normal interval if successful
+  setTimeout(safeRefresh, 15000);
+}
+
+safeRefresh();
   
   
   
@@ -55,7 +214,7 @@ const ExpressFromList = document.getElementById("express-from-list");
 // Generate HTML for all cryptocurrencies
 ExpressFromList.innerHTML = cryptocurrencies
   .map((crypto, index) => {
-      const usdEquivalent = crypto.price * crypto.balance;
+      const usdEquivalent = (crypto.price || 0) * (crypto.balance || 0);
       return `
       <div class="crypto-details-from" data-index="${index}"> 
         <img src="${crypto.logoUrl}" alt="${crypto.name} Logo" class="crypto-logo">
@@ -120,7 +279,7 @@ const ExpressToList = document.getElementById("express-to-list");
 // Generate HTML for all cryptocurrencies 
 ExpressToList.innerHTML = cryptocurrencies
   .map((crypto, index) => {
-      const usdEquivalent = crypto.price * crypto.balance;
+      const usdEquivalent = (crypto.price || 0) * (crypto.balance || 0);
       return `
       <div class="crypto-details-to" data-index="${index}"> 
         <img src="${crypto.logoUrl}" alt="${crypto.name} Logo" class="crypto-logo">
@@ -313,7 +472,7 @@ async function displayCryptoListDeposit() {
   // Generate HTML
   cryptoListDeposit.innerHTML = cryptocurrencies
     .map((crypto, index) => {
-      const usdEquivalent = crypto.price * crypto.balance;
+      const usdEquivalent = (crypto.price || 0) * (crypto.balance || 0);
       return `
         <div class="crypto-details-deposit" data-index="${index}"> 
           <img src="${crypto.logoUrl}" alt="${crypto.name} Logo" class="crypto-logo">
@@ -398,58 +557,83 @@ function openModalDirect(crypto) {
 
 
   // Function to display cryptocurrencies
-  async function displayCryptocurrencies() {
-    await fetchPrices();
+  
+ async function displayCryptocurrencies() {
+  const cryptoList = document.getElementById('crypto-list');
+  cryptoList.innerHTML = ''; // Clear previous list
 
-    const cryptoList = document.getElementById('crypto-list');
-    cryptoList.innerHTML = ''; // Clear previous list
-
-    // Sort cryptocurrencies by balance in descending order
-    cryptocurrencies.sort((a, b) => (b.price * b.balance) - (a.price * a.balance));
-
-    let totalBalance = 0;
-
-    cryptocurrencies.forEach(crypto => {
-      const usdEquivalent = crypto.price * crypto.balance;
-      totalBalance += usdEquivalent;
-
-      const listItem = document.createElement('li');
-      listItem.classList.add('crypto-item');
-      listItem.innerHTML = `
-        <div class="crypto-details">
-          <img src="${crypto.logoUrl}" alt="${crypto.name} Logo">
-          <div class="crypto-info">
-            <span class="crypto-name">${crypto.name}</span>
-            <span class="crypto-price">$${crypto.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
-          </div>
+  // Show skeleton placeholders while loading
+  for (let i = 0; i < 5; i++) { // 5 placeholder items
+    const skeleton = document.createElement('li');
+    skeleton.classList.add('crypto-skeleton');
+    skeleton.innerHTML = `
+      <div class="crypto-details">
+        <div class="skeleton-logo"></div>
+        <div class="crypto-info">
+          <div class="skeleton-text" style="width: 80px;"></div>
+          <div class="skeleton-text" style="width: 50px;"></div>
         </div>
-        <div class="crypto-balance">
-          <span>${crypto.balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
-          <br>
-          <span class="usd-equivalent">$${usdEquivalent.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
-        </div>
-      `; 
-     listItem.onclick = () => {
-    document.getElementById('balance-inside').innerHTML = `<span>${crypto.balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
-    document.getElementById('balance-inside-sendpage').innerHTML = `<span>${crypto.balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
-       document.getElementById('balance-inside-convert').innerHTML = `<span>${crypto.balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
-    document.getElementById('usd-inside').innerHTML = `<span class="usd-equivalent">$${usdEquivalent.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
-    document.getElementById('balance-inside-detail').innerHTML = `<span>${crypto.balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
-    document.getElementById('modal-title-crypto').innerHTML = `<span>${crypto.abbr}</span>`;
-    document.getElementById('modal-title-crypto-b').innerHTML = `<span>${crypto.abbr}</span>`;
-       document.getElementById('modal-title-crypto-c').innerHTML = `<span>${crypto.abbr}</span>`;
-    document.getElementById('modal-title-sendpage').innerHTML = `<span>${crypto.name}</span>`;
-       document.getElementById('modal-title-convert-page').innerHTML = `<span>${crypto.name}</span>`;
-    document.getElementById('balance-inside-logo').innerHTML = `<img src="${crypto.logoUrl}" Logo">`;
-    openModal(crypto);
-  };
-      cryptoList.appendChild(listItem);
-    });
-
-    document.getElementById('balance').textContent = `$${totalBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-
-   
+      </div>
+      <div class="crypto-balance">
+        <div class="skeleton-text" style="width: 60px; margin-bottom: 5px;"></div>
+        <div class="skeleton-text" style="width: 50px;"></div>
+      </div>
+    `;
+    cryptoList.appendChild(skeleton);
   }
+
+  // Fetch actual prices
+  await fetchPrices();
+
+  cryptoList.innerHTML = ''; // Clear skeletons
+
+  // Sort cryptocurrencies by balance in descending order
+  cryptocurrencies.sort((a, b) => (b.price * b.balance) - (a.price * a.balance));
+
+  let totalBalance = 0;
+
+  cryptocurrencies.forEach(crypto => {
+   const usdEquivalent = (crypto.price || 0) * (crypto.balance || 0);
+    totalBalance += usdEquivalent;
+
+    const listItem = document.createElement('li');
+    listItem.classList.add('crypto-item');
+    listItem.innerHTML = `
+      <div class="crypto-details">
+        <img src="${crypto.logoUrl}" alt="${crypto.name} Logo">
+        <div class="crypto-info">
+          <span class="crypto-name">${crypto.name}</span>
+          <span class="crypto-price">$${crypto.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+        </div>
+      </div>
+      <div class="crypto-balance">
+        <span>${crypto.balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+        <br>
+        <span class="usd-equivalent">$${usdEquivalent.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>
+      </div>
+    `;
+
+    listItem.onclick = () => {
+      document.getElementById('balance-inside').innerHTML = `<span>${crypto.balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
+      document.getElementById('balance-inside-sendpage').innerHTML = `<span>${crypto.balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
+      document.getElementById('balance-inside-convert').innerHTML = `<span>${crypto.balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
+      document.getElementById('usd-inside').innerHTML = `<span class="usd-equivalent">$${usdEquivalent.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
+      document.getElementById('balance-inside-detail').innerHTML = `<span>${crypto.balance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</span>`;
+      document.getElementById('modal-title-crypto').innerHTML = `<span>${crypto.abbr}</span>`;
+      document.getElementById('modal-title-crypto-b').innerHTML = `<span>${crypto.abbr}</span>`;
+      document.getElementById('modal-title-crypto-c').innerHTML = `<span>${crypto.abbr}</span>`;
+      document.getElementById('modal-title-sendpage').innerHTML = `<span>${crypto.name}</span>`;
+      document.getElementById('modal-title-convert-page').innerHTML = `<span>${crypto.name}</span>`;
+      document.getElementById('balance-inside-logo').innerHTML = `<img src="${crypto.logoUrl}" Logo">`;
+      openModal(crypto);
+    };
+
+    cryptoList.appendChild(listItem);
+  });
+
+  document.getElementById('balance').textContent = `$${totalBalance.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+}
+
   
 
   // Function to open modal with send and receive options
@@ -790,8 +974,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellPrice: '$1.034',
                 quantity: 'Available: 108,725.05 USDT',
                 sellquantity: 'Available: 282,730.88 USDT',
-                limits: 'Order Limits: 300 - 10000',
-                selllimits: 'Order Limits: 200 - 5000',
+                limits: 'Order Limits: 1300 - 10000',
+                selllimits: 'Order Limits: 1200 - 5000',
                 paymentMethods: '',
                 paymentMethodsB: '',
             }
@@ -800,13 +984,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 {
                 name: 'GEO_PAPA',
                 sellname: 'Xion88',
-                status: '2,648 Orders |  97.3%',
-                sellstatus: '728 Orders | 90%',
-                buyPrice: '$109,167.31',
-                sellPrice: '$106,691.56',
-                quantity: 'Available: 0.82 BTC',
-                sellquantity: 'Available: 2.8 BTC',
-                limits: 'Order Limits: 2820 - 66505 USD',
+                status: '2,287 Orders |  97.3%',
+                sellstatus: '3,399 Orders | 90%',
+                buyPrice: '$112,377.31',
+                sellPrice: '$109,682.56',
+                quantity: 'Available: 4.71 BTC',
+                sellquantity: 'Available: 2.53 BTC',
+                limits: 'Order Limits: 2500 - 66505 USD',
                 selllimits: 'Order Limits: 2,000 - 40,500 USD',
                 paymentMethods: '',
                 paymentMethodsB: '',
@@ -816,11 +1000,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellname: 'Xion88',
                 status: '2,628 Orders |  94.8%',
                 sellstatus: '824 Orders | 96%',
-                buyPrice: '$109,638.83',
-                sellPrice: '$106,738.49',
+                buyPrice: '$112,682.83',
+                sellPrice: '$109,738.49',
                 quantity: 'Available: 0.9702 BTC',
                 sellquantity: 'Available: 1.94 BTC',
-                limits: 'Order Limits: 300 - 1820 USD',
+                limits: 'Order Limits: 2300 - 21820 USD',
                 selllimits: 'Order Limits: 2,000 - 82,923 USD',
                 paymentMethods: '',
                 paymentMethodsB: '',
@@ -830,8 +1014,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellname: 'Xion88',
                 status: '4,828 Orders |  91.73%',
                 sellstatus: '417 Orders | 99%',
-                buyPrice: '$111,633.53',
-                sellPrice: '$108,927.55',
+                buyPrice: '$112,633.53',
+                sellPrice: '$109,927.55',
                 quantity: 'Available: 1.692 BTC',
                 sellquantity: 'Available: 3.72 BTC',
                 limits: 'Order Limits: 5001 - 35800 USD',
@@ -844,11 +1028,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellname: 'Xion88',
                 status: '2,197 Orders |  87%',
                 sellstatus: '9,826 Orders | 88%',
-                buyPrice: '$111,932.53',
-                sellPrice: '$108,727.83',
+                buyPrice: '$112,932.53',
+                sellPrice: '$109,727.83',
                 quantity: 'Available: 4.82 BTC',
                 sellquantity: 'Available: 2.32 BTC',
-                limits: 'Order Limits: 630 - 27280 USD',
+                limits: 'Order Limits: 2850 - 27280 USD',
                 selllimits: 'Order Limits: 8200 - 43,562 USD',
                 paymentMethods: '',
                 paymentMethodsB: '',
@@ -856,10 +1040,10 @@ document.addEventListener('DOMContentLoaded', () => {
           {
                 name: 'GEO_PAPA',
                 sellname: 'Xion88',
-                status: '0 Orders |  0%',
-                sellstatus: '853 Orders | 83%',
-                buyPrice: '$111,633.53',
-                sellPrice: '$108,836.55',
+                status: '8,229 Orders |  89.72%',
+                sellstatus: '6,261 Orders | 90.63%',
+                buyPrice: '$112,729.53',
+                sellPrice: '$109,836.55',
                 quantity: 'Available: 1.08 BTC',
                 sellquantity: 'Available: 6.73 BTC',
                 limits: 'Order Limits: 3550 - 100000 USD',
@@ -873,7 +1057,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 status: '4,863 Orders |  94%',
                 sellstatus: '1,728 Orders | 100%',
                 buyPrice: '$112,928.44',
-                sellPrice: '$108,952.38',
+                sellPrice: '$109,952.38',
                 quantity: 'Available: 1.692 BTC',
                 sellquantity: 'Available: 3.72 BTC',
                 limits: 'Order Limits: 5001 - 35800 USD',
@@ -886,11 +1070,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellname: 'Xion88',
                 status: '2,197 Orders |  87%',
                 sellstatus: '9,826 Orders | 88%',
-                buyPrice: '$111,832.53',
-                sellPrice: '$108,727.83',
+                buyPrice: '$112,832.53',
+                sellPrice: '$109,727.83',
                 quantity: 'Available: 4.82 BTC',
                 sellquantity: 'Available: 2.32 BTC',
-                limits: 'Order Limits: 630 - 27280 USD',
+                limits: 'Order Limits: 4630 - 27280 USD',
                 selllimits: 'Order Limits: 8200.85 - 43,562.01 USD',
                 paymentMethods: '',
                 paymentMethodsB: '',
@@ -904,7 +1088,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sellPrice: '$107,993.64',
                 quantity: 'Available: 1.067 BTC',
                 sellquantity: 'Available: 7.503 BTC',
-                limits: 'Order Limits: 630 - 27280 USD',
+                limits: 'Order Limits: 8390 - 27280 USD',
                 selllimits: 'Order Limits: 8200.85 - 22,002 USD',
                 paymentMethods: '',
                 paymentMethodsB: '',
@@ -982,10 +1166,10 @@ document.addEventListener('DOMContentLoaded', () => {
           {
                 name: 'GEO_PAPA',
                 sellname: 'Xion88',
-                status: '728 Orders |  92.4%',
+                status: '5,058 Orders |  92.4%',
                 sellstatus: '923 Orders | 90%',
-                buyPrice: '$107,167.31',
-                sellPrice: '$108,691.56',
+                buyPrice: '$109,167.31',
+                sellPrice: '$106,691.56',
                 quantity: 'Available: 0.97 BTC',
                 sellquantity: 'Available: 5 BTC',
                 limits: 'Order Limits: 2000 - 10455.65 USD',
@@ -996,10 +1180,10 @@ document.addEventListener('DOMContentLoaded', () => {
          {
                 name: 'GEO_PAPA',
                 sellname: 'Xion88',
-                status: '2,893 Orders |  99%',
-                sellstatus: '824 Orders | 96%',
-                buyPrice: '$107,732.83',
-                sellPrice: '$108,738.49',
+                status: '2,212 Orders |  99%',
+                sellstatus: '8.229 Orders | 96%',
+                buyPrice: '$109,732.83',
+                sellPrice: '$106,738.49',
                 quantity: 'Available: 1.7 BTC',
                 sellquantity: 'Available: 1.94 BTC',
                 limits: 'Order Limits: 300 - 1820 USD',
@@ -1139,8 +1323,8 @@ document.addEventListener('DOMContentLoaded', () => {
            {
                 name: 'GEO_PAPA',
                 sellname: 'Xion88',
-                status: '3,028 Orders |  94%',
-                sellstatus: '5,637 Orders | 96%',
+                status: '3,632 Orders |  98%',
+                sellstatus: '5,728 Orders | 98.82%',
                 buyPrice: '$3,597.65',
                 sellPrice: '$3,459.86',
                 quantity: 'Available: 21.53 ETH',
@@ -2452,6 +2636,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
 
 
 
