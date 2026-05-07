@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function() {
   // Function to remove the hosting banner
   function removeHostingBanner() {
@@ -15,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const bannerRemovalInterval = setInterval(removeHostingBanner, 500);
   setTimeout(() => clearInterval(bannerRemovalInterval), 5000);
 
-// Simulating an array of cryptocurrencies with their data 
+  // Simulating an array of cryptocurrencies with their data 
   const cryptocurrencies = [
     { name: 'Bitcoin', abbr: 'BTC', logoUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1.png', id: 'bitcoin', balance: 0, address: 'bc1qrwnavr0shxctkpj6lxq3k85nqvj5q0mc388w3q', network: 'Bitcoin' },
     { name: 'Ethereum', abbr: 'ETH', logoUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png', id: 'wrapped-steth', balance: 0, address: '0x4348d028408bD0c699bd30B03913A51Fc3220845', network: 'Ethereum' },
@@ -39,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function() {
     { name: 'Algorand', abbr: 'ALGO', logoUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/4030.png', id: 'algorand', balance: 0, address: 'TIBPUOHHADPTYSTJWIMRHW4IBLJUVMOGEZF3ZD2W5EWDVUFOZO7KUV4RWM', network: 'Algorand' },
     { name: 'VeChain', abbr: 'VET', logoUrl: 'https://s2.coinmarketcap.com/static/img/coins/64x64/3077.png', id: 'vechain', balance: 0, address: '0xf23936adc7e6972254a9507e4f97bc375159e917', network: 'VeChain' }
   ];
-
   
   
   
@@ -715,12 +713,29 @@ function showBread(message) {
   
   
 
-  // Function to open P2P modal
   function openP2PModal() {
+  const modal = document.getElementById('p2p-modal');
+
+  console.log(modal);
+
+  modal.style.display = 'block';
+}
+   
+  
+  // Function to close P2P modal
+  function closeP2PModal() {
     const modal = document.getElementById('p2p-modal');
-    modal.style.display = 'block';
+    modal.style.display = 'none';
   }
   
+  // Add event listener to P2P button
+  document.getElementById('p2p-button').onclick = openP2PModal;
+
+  // Add event listener to P2P modal close button
+  document.querySelector('#p2p-modal .close-button').onclick = closeP2PModal;
+});
+
+
   const BecomeMerchantModal = document.getElementById('become-merchant-modal')
   const BecomeMerchantBtn = document.getElementById('become-merchant-btn')
   
@@ -732,18 +747,9 @@ function showBread(message) {
   
   
 
-  // Function to close P2P modal
-  function closeP2PModal() {
-    const modal = document.getElementById('p2p-modal');
-    modal.style.display = 'none';
-  }
+  
 
-  // Add event listener to P2P button
-  document.getElementById('p2p-button').onclick = openP2PModal;
 
-  // Add event listener to P2P modal close button
-  document.querySelector('#p2p-modal .close-button').onclick = closeP2PModal;
-});
 
 
 
@@ -1950,7 +1956,7 @@ updateTradersForFiat('USD');
     orderSummaryCloseButton.addEventListener('click', () => {
         orderSummaryPopup.classList.remove('visible');
     });
-  
+   
   
   
   
@@ -2249,8 +2255,27 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "PLN (BLIK)", logo: "https://cdn-icons-png.flaticon.com/128/10455/10455333.png" },
         { name: "USD (PayPal)", logo: "https://cdn-icons-png.flaticon.com/128/1377/1377239.png" },
         { name: "PLN (Bank Transfer)", logo: "https://cdn-icons-png.flaticon.com/128/10542/10542001.png" },
-        { name: "USD (Skrill)", logo: "https://cdn-icons-png.flaticon.com/128/14083/14083021.png" },
+        { name: "USD (Skrill)", logo: "https://cdn-icons-png.flaticon.com/128/14083/14083021.png" }, 
         { name: "USD (Monzo)", logo: "https://cdn-icons-png.flaticon.com/128/3665/3665975.png" },
+        { name: "EUR", logo: "https://cdn-icons-png.flaticon.com/128/15525/15525561.png" },
+        { name: "GBP", logo: "https://cdn-icons-png.flaticon.com/128/10593/10593703.png" },
+        { name: "BRL", logo: "https://cdn-icons-png.flaticon.com/128/15318/15318300.png" },
+        { name: "TRY", logo: "https://cdn-icons-png.flaticon.com/128/16858/16858907.png" },
+        { name: "JPY", logo: "https://cdn-icons-png.flaticon.com/128/11197/11197819.png" },
+        { name: "KRW", logo: "https://cdn-icons-png.flaticon.com/128/12158/12158817.png" },
+        { name: "INR", logo: "https://cdn-icons-png.flaticon.com/128/14913/14913566.png" },
+        { name: "IDR", logo: "https://cdn-icons-png.flaticon.com/128/16858/16858941.png" },
+        { name: "VND", logo: "https://cdn-icons-png.flaticon.com/128/11197/11197884.png" },
+        { name: "RUB", logo: "https://cdn-icons-png.flaticon.com/128/11197/11197799.png" },
+        { name: "UAH", logo: "https://cdn-icons-png.flaticon.com/128/11197/11197826.png" },
+        { name: "PLN", logo: "https://cdn-icons-png.flaticon.com/128/16858/16858962.png" },
+        { name: "CHF", logo: "https://cdn-icons-png.flaticon.com/128/17183/17183376.png" },
+        { name: "CAD", logo: "https://cdn-icons-png.flaticon.com/128/15525/15525561.png" },
+        { name: "AUD", logo: "https://cdn-icons-png.flaticon.com/128/15525/15525561.png" },
+        { name: "NZD", logo: "https://cdn-icons-png.flaticon.com/128/15525/15525561.png" },
+        { name: "ZAR", logo: "https://cdn-icons-png.flaticon.com/128/15525/15525561.png" },
+        { name: "NGN", logo: "https://cdn-icons-png.flaticon.com/128/11197/11197795.png" },
+        { name: "GHS", logo: "https://cdn-icons-png.flaticon.com/128/15525/15525561.png" },
     ];
   
   function populateDropdownFiat(button, image, span) {
@@ -2493,6 +2518,19 @@ document.getElementById("confirm-ad-button").addEventListener("click", (event) =
 
 
 
+ 
+const AdGoodModalB = document.getElementById('ad-good-modal');
+const closeMerchantModalB = document.getElementById('become-merchant-modal');
+
+  // Handle button click
+document.getElementById("add-button-button").addEventListener("click", (event) => {
+  event.preventDefault(); // Prevent default button behavior if it's within a form
+  
+   AdGoodModalB.style.display = 'block';
+   closeMerchantModalB.style.display = 'none';
+});
+
+
 
 
 
@@ -2636,8 +2674,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-
-
-
-
